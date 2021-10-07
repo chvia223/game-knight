@@ -1,29 +1,31 @@
 import React from 'react'
-import { KeyBoardAvoidingView, StyleSheet, Text, View } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput } from 'react-native'
 
 const Login = () => {
     return (
-        <KeyBoardAvoidingView
+        <KeyboardAvoidingView
         style={styles.container}
         behavior="padding"
         >
+            <Text>Login Screen</Text>
             <View style={styles.inputContainer}>
                 <TextInput 
                 placeholder="Email" 
                 // value={ } 
                 // onChangeText={text => }
                 style={styles.input}
-                />
-                <TextInput 
+                >
+                </TextInput>
+                <TextInput
                 placeholder="Password" 
                 // value={ } 
                 // onChangeText={text => }
                 style={styles.input}
                 secureTextEntry
-                />
+                >
+                </TextInput>
             </View>
-            <Text>Login Screen</Text>
-        </KeyBoardAvoidingView>
+        </KeyboardAvoidingView>
     )
 }
 
