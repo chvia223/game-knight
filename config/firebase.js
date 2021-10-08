@@ -26,4 +26,37 @@ else {
 
 const auth = firebase.auth()
 
+const containsValue = (directory, value) => {
+  var contents;
+  firebase.database().ref(directory).on('value', value => {
+    contents = value.val();
+  });
+  for (const key in contents) {
+    if (contents[key] === value) {
+      return true;
+    }
+  }
+  return false;
+}
+
+const getValue = (directory, key) => {
+  var contents;
+  firebase.database().ref(directory).on('value', value => {
+    contents = value.val();
+  });
+  return contents[key]
+}
+// var test;
+// firebase.database().ref('TestOne/').on('value', value => {
+//   test = value.val();
+// });
+// const addItem = (directory, key, value) => {
+  // firebase.database().ref('TestOne/TestFour').set({
+  // Value: "Hello Jacob",
+//
+// }
+// });
+// console.log(test);
+console.log(containsValue("TestOne/", "Hello Jacob"));
+
 export { auth };
