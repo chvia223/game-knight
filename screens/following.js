@@ -1,31 +1,22 @@
 import { useNavigation } from '@react-navigation/core'
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { auth } from '../config/firebase'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
-const Profile = () => {
+const Following = () => {
+
     const navigation = useNavigation();
 
-    const toFollowing = () => {
-        navigation.replace("Following")
+    const toProfile = () => {
+        navigation.replace("Profile")
     }
-
-    const handleSignOut = () => {
-        auth.signOut().then(() => {
-            navigation.replace("Login")
-        })
-        .catch(err => {
-            alert(err.message)
-        })
-    };
 
     return (
         <View style={[styles.page, styles.centerContent]}>
             <TouchableOpacity 
             style={[styles.centerContent, styles.feedButton, styles.spacing]} 
-            onPress={toFollowing}
+            onPress={toProfile}
             >
-                <Text>Following</Text>
+                <Text>Profile</Text>
             </TouchableOpacity>
             <TouchableOpacity 
             style={[styles.centerContent, styles.feedButton, styles.spacing]} 
@@ -33,18 +24,11 @@ const Profile = () => {
             >
                 <Text>Feed</Text>
             </TouchableOpacity>
-            <Text>{auth.currentUser?.email}</Text>
-            <TouchableOpacity
-            style={[styles.logoutButton, styles.centerContent, styles.spacing]}
-            onPress={handleSignOut}
-            >
-                <Text>Sign Out</Text>
-            </TouchableOpacity>
         </View>
     )
 }
 
-export default Profile
+export default Following
 
 const styles = StyleSheet.create({
     centerContent: {
