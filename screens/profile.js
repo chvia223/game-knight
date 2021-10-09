@@ -23,7 +23,16 @@ const Profile = () => {
             alert(err.message)
         })
     };
-      
+    
+
+    let chat = getChat("testing2")
+    let authors = []
+    let messages = []
+    console.log(chat)
+    for (const key in chat) {
+        authors.push(chat[key]["Author"])
+        messages.push(chat[key]["Content"])
+    }
 
     return (
         <View style={[styles.page]}>
@@ -50,6 +59,7 @@ const Profile = () => {
             >
                 <Text>Sign Out</Text>
             </TouchableOpacity>
+            <Text>{messages[1]}</Text>
         </View>
     )
 }
