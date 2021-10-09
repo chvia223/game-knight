@@ -35,7 +35,7 @@ const Profile = () => {
     }
 
     return (
-        <View style={[styles.page]}>
+        <View style={[styles.page, styles.lightBlueBackground]}>
             <Header toProfile={toFeed} toFollowing={toFollowing} Title="Profile"/>
             <Text style = {[styles.spacing, styles.welcomeText]}>
                 Welcome to Game Night! You are currently signed in as {auth.currentUser?.email}. Click Feed to view events in your area and click Following to look at the Chat Rooms for events in your area.
@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     },
     page: {
         flex: 1,
-        backgroundColor: 'gray',
         alignItems: 'center',
     },
     logoutButton: {

@@ -9,11 +9,11 @@ export default function Header({ toProfile, toFollowing, Title }) {
     return (
         <View style={styles.header}>
             <TouchableOpacity
-                style={styles.threadIcon}
+                style={[styles.threadIcon, styles.pinkBackground]}
                 onPress={toFollowing}
             >
                 {/* Event Threads Button */}
-                <Text style={styles.iconText}>#</Text>
+                <Text style={[styles.iconText, ]}>#</Text>
             </TouchableOpacity>
             <Image
             source={require('../assets/Asset_12x.png')}
@@ -21,7 +21,7 @@ export default function Header({ toProfile, toFollowing, Title }) {
             style={styles.logo}
             />
             <TouchableOpacity
-                style={styles.profileIcon} 
+                style={[styles.profileIcon, styles.blueBackground]} 
                 onPress={toProfile}
             >
                 <Text style={styles.iconText}>:D</Text>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         paddingTop: 5
     },
     profileIcon: {
-        backgroundColor: 'white',
+        
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

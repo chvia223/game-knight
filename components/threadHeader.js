@@ -18,7 +18,7 @@ export default function Header({ toProfile, toFollowing }) {
             style={styles.logo}
             />
             <TouchableOpacity
-                style={styles.profileIcon} 
+                style={[styles.profileIcon, styles.pinkBackground]} 
                 onPress={toProfile}
             >
                 <Text style={styles.iconText}>#</Text>

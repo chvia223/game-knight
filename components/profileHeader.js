@@ -9,7 +9,7 @@ export default function Header({ toProfile, toFollowing }) {
     return (
         <View style={styles.header}>
             <TouchableOpacity
-                style={styles.profileIcon} 
+                style={[styles.profileIcon, styles.blueBackground]} 
                 onPress={toProfile}
             >
                 <Text style={styles.iconText}>D:</Text>
