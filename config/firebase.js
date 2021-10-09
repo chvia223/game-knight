@@ -59,20 +59,22 @@ const getEvent = title => {
   return contents[`${title.toLowerCase()}`]
 }
 
-const getEvents = () => {
+const getEvents = function() {
   var contents;
   let filepath = 'events/';
   firebase.database().ref(filepath).on('value', value => {
     contents = value.val();
   });
   if (contents === undefined || contents === null) {
-    console.error("Unable to find event");
+    console.error("Unable to find events");
   }
   let events = [];
+  let counter = 0;
   for (const key in contents) {
-    events.push(contents[key]);
+    counter++;
+    events.push({key: counter.toString(), text: key});
   }
   return events;
 }
 
-export { auth, addEvent, getEvent, getEvents };
+export { auth, addEvent, getEvent, getEvents, firebase };
