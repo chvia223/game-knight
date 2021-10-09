@@ -28,8 +28,8 @@ export default function Header({ toProfile, toFollowing }) {
 
 const styles = StyleSheet.create({
     header: {
-        paddingTop: 20,
-        padding: 9,
+        marginTop: 20,
+        padding: 10,
         backgroundColor: '#333',
         flexDirection: 'row',
         justifyContent: 'flex-end',
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 20,
         fontWeight: 'bold',
-        flex: 20
+        flex: 20,
+        paddingTop: 5
     },
     profileIcon: {
         backgroundColor: 'white',
@@ -59,9 +60,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
         borderRadius: 5,
-        padding: 8
+        padding: 8,
     },
     iconText: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 15,
+        // textShadowColor: 'grey',
+        // textShadowOffset: {width: -1, height: 1},
+        // textShadowRadius: 10
     }
 });
