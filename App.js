@@ -8,7 +8,6 @@ import Login, {} from './screens/login.js';
 import Feed from './screens/feed.js';
 import Profile from './screens/profile.js';
 import Following from './screens/following.js';
-// import Firebase from 'firebase';
 
 const Stack = createNativeStackNavigator();
 

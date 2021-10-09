@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import Header from '../components/threadHeader';
 
 const Following = () => {
 
@@ -10,8 +11,13 @@ const Following = () => {
         navigation.replace("Profile")
     }
 
+    const toFeed = () => {
+        navigation.replace("Feed")
+    }
+
     return (
-        <View style={[styles.page, styles.centerContent]}>
+        <View style={[styles.page]}>
+            <Header toProfile={toFeed} toFollowing={toFeed} Title="Profile"/>
             <TouchableOpacity 
             style={[styles.centerContent, styles.feedButton, styles.spacing]} 
             onPress={toProfile}
@@ -20,7 +26,7 @@ const Following = () => {
             </TouchableOpacity>
             <TouchableOpacity 
             style={[styles.centerContent, styles.feedButton, styles.spacing]} 
-            onPress={() => {alert('This button still does nothing.')}}
+            onPress={toFeed}
             >
                 <Text>Feed</Text>
             </TouchableOpacity>
@@ -38,6 +44,7 @@ const styles = StyleSheet.create({
     page: {
         flex: 1,
         backgroundColor: 'gray',
+        alignItems: 'center',
     },
     logoutButton: {
         backgroundColor: '#0782F9',
