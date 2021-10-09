@@ -24,6 +24,16 @@ const Profile = () => {
         })
     };
 
+    
+    
+    // let chat = getChat("testing2").forEach(value => {console.log(value)})
+    // let authors = []
+    // let messages = []
+    // for (const key in chat) {
+    //     author.push(chat[key][0])
+    //     message.push(chat[key][0])
+    //   }
+
     return (
         <View style={[styles.page]}>
             <Header toProfile={toFeed} toFollowing={toFollowing} Title="Profile"/>

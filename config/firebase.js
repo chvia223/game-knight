@@ -56,11 +56,56 @@ const getEvent = title => {
   firebase.database().ref(filepath).on('value', value => {
     contents = value.val();
   });
-  if (contents === undefined) {
+  if (contents === null || contents === undefined) {
     console.error("Unable to find item: " + title);
+    return{}
   }
   return contents[`${title.toLowerCase()}`]
 }
+
+
+const getChat = (chat) => {
+  var contents;
+  let filepath = `EventChats/${chat}/Chat/`;
+  firebase.database().ref(filepath).on('value', value => {
+    contents = value.val();
+  });
+  if (contents === null || contents === undefined) {
+    console.error("Unable to find item: " + chat);
+    return{}
+  }
+  let messages = []
+  // console.log("jeremy")
+  for (const key in contents) {
+    messages.push(contents[key])
+  }
+  return messages
+  // return contents[`${chat.toLowerCase()}`]
+} 
+
+
+
+// this function workd!
+const addMessage = (message, title, author) => {
+  let time = Date.now()
+  let chatkeyfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
+  firebase.database().ref(chatkeyfilepath).set(time);
+  let chatfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
+  let body = {
+    Author: author,
+    Content: message,
+  }
+  firebase.database().ref(chatfilepath).set(body);
+}
+
+// addEvent("Testing2", "This is such a cool event you all should come", 1000000000, "My House");
+
+// console.log(getEvent("testing2").Creator);
+
+
+// getChat("testing2").forEach(value => {console.log(value)})
+
+// addMessage("Hello","testing2", "Jacob")
 
 const getEvents = function() {
   if (firebase.apps.length === 0) {
@@ -113,5 +158,6 @@ const getMessage = (chat) => {
   }
   return messages
 } 
+
 
 export { auth, addEvent, getEvent, getEvents, addMessage, getMessage, firebase };
