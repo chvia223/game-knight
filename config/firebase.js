@@ -26,27 +26,6 @@ else {
 
 const auth = firebase.auth()
 
-const containsValue = (directory, value) => {
-  var contents;
-  firebase.database().ref(directory).on('value', value => {
-    contents = value.val();
-  });
-  for (const key in contents) {
-    if (contents[key] === value) {
-      return true;
-    }
-  }
-  return false;
-}
-
-const getValue = (directory, key) => {
-  var contents;
-  firebase.database().ref(directory).on('value', value => {
-    contents = value.val();
-  });
-  return contents[key]
-}
-
 const addEvent = (title, description, daysTillEvent, location) => {
   let filepath = `events/${title.toLowerCase()}`
   let chatFilepath = `EventChats/${title.toLowerCase()}`;
@@ -95,10 +74,5 @@ const getEvents = () => {
   }
   return events;
 }
-
-let daysTillEvent = 5;
-addEvent("Magic the Gathering Party 2", "This is such a cool event you all should come", daysTillEvent, "My House");
-
-console.log(getEvents());
 
 export { auth, addEvent, getEvent, getEvents };
