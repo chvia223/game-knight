@@ -23,16 +23,6 @@ const Profile = () => {
             alert(err.message)
         })
     };
-
-    
-    
-    let chat = getChat("testing2")
-    let authors = []
-    let messages = []
-    for (const key in chat) {
-        authors.push(chat[key][0])
-        messages.push(chat[key][0])
-      }
       
 
     return (

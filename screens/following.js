@@ -2,6 +2,8 @@ import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import Header from '../components/threadHeader';
+import { auth, getEvent, getChat } from '../config/firebase'
+
 
 const Following = () => {
 
@@ -14,6 +16,15 @@ const Following = () => {
     const toFeed = () => {
         navigation.replace("Feed")
     }
+
+    let chat = getChat("testing2")
+    let authors = []
+    let messages = []
+    for (const key in chat) {
+        authors.push(chat[key]['Author'])
+        messages.push(chat[key]['Content'])
+    }
+    console.log(authors, messages)
 
     return (
         <View style={[styles.page]}>
