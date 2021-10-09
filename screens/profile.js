@@ -10,6 +10,10 @@ const Profile = () => {
         navigation.replace("Following")
     }
 
+    const toFeed = () => {
+        navigation.replace("Feed")
+    }
+
     const handleSignOut = () => {
         auth.signOut().then(() => {
             navigation.replace("Login")
@@ -29,7 +33,7 @@ const Profile = () => {
             </TouchableOpacity>
             <TouchableOpacity 
             style={[styles.centerContent, styles.feedButton, styles.spacing]} 
-            onPress={() => {alert('This button still does nothing.')}}
+            onPress={toFeed}
             >
                 <Text>Feed</Text>
             </TouchableOpacity>
