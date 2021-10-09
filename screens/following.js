@@ -18,7 +18,8 @@ const Following = () => {
     }
 
     let chat = getChat(getFollowedEvent())
-    
+    console.log(getFollowedEvent())
+                
 
     return (
         <View style={[styles.page]}>
@@ -35,16 +36,17 @@ const Following = () => {
             >
                 <Text>Feed</Text>
             </TouchableOpacity>
-            {/* <View>
+            <View>
                 {
                     chat.map((event, index) => {
                         return (
-                        <View key={index}>
-                            <Text>{event}</Text>
-                        <Veiw/>)
-                    }
+                            <View key={index}>
+                                <Text>{event.Author} : {event.Message}</Text>
+                            </View>
+                        );
+                    })
                 }
-            </View> */}
+            </View>
         </View>
     )
 }

@@ -43,7 +43,7 @@ const addEvent = (title, description, daysTillEvent, location) => {
     Created: Date.now(),
     Chat: {
       Message: {
-        Author: `${auth.currentUser?.email}`,
+        Author: `The Game Knights Development Team`,
         Content: `Welcome to the ${title} group chat. Feel free to message eachother here about your plans for the event.`
       }
     }
@@ -109,6 +109,7 @@ const getChat = (chat) => {
   }
   let messages = []
   // console.log("jeremy")
+  let counter = 0;
   for (const key in contents) {
     messages.push(contents[key])
   }
@@ -144,7 +145,10 @@ const getFollowedEvent = () => {
   firebase.database().ref(filepath).on('value', (event) => {
     followedEvent = event;
   })
-  return followedEvent.Following;
+  if (followedEvent === null || followedEvent === undefined) {
+    return 'default';
+  }
+  return followedEvent['Following'];
 }
 
 
