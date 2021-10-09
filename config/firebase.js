@@ -81,7 +81,7 @@ const getEvent = (title) => {
   return contents[`${title.toLowerCase()}`]
 }
 
-const getMessage = (chat) => {
+const getChat = (chat) => {
   var contents;
   let filepath = `EventChats/${chat}/Chat/`;
   firebase.database().ref(filepath).on('value', value => {
@@ -120,7 +120,7 @@ const addMessage = (message, title, author) => {
 // console.log(getEvent("testing2").Creator);
 
 
-// getMessage("testing2").forEach(value => {console.log(value)})
+// getChat("testing2").forEach(value => {console.log(value)})
 
 // addMessage("Hello","testing2", "Jacob")
 
