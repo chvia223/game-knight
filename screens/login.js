@@ -25,6 +25,7 @@ const Login = () => {
             .createUserWithEmailAndPassword(email, password)
             .then(userCredentials => {
                 const user = userCredentials.user;
+                alert('You have successfully registered. Login to continue.')
                 console.log('Registered with', user.email);
             }).catch(error => alert(error.message))
             

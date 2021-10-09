@@ -46,17 +46,44 @@ const getValue = (directory, key) => {
   });
   return contents[key]
 }
-// var test;
-// firebase.database().ref('TestOne/').on('value', value => {
-//   test = value.val();
-// });
-// const addItem = (directory, key, value) => {
-  // firebase.database().ref('TestOne/TestFour').set({
-  // Value: "Hello Jacob",
-//
-// }
-// });
-// console.log(test);
-console.log(containsValue("TestOne/", "Hello Jacob"));
 
-export { auth };
+const addEvent = (title, description, time, location) => {
+  let filepath = `events/${title.toLowerCase()}`
+  let chatFilepath = `EventChats/${title.toLowerCase()}`;
+  let body = {
+    Description: description,
+    Date: time,
+    Location: location,
+    Creator: `${auth.currentUser?.email}`
+  }
+  firebase.database().ref(filepath).set(body);
+  firebase.database().ref(chatFilepath).set({
+    Created: Date.now(),
+    Chat: {
+      Message: {
+        Author: `${auth.currentUser?.email}`,
+        Content: `Welcome to the ${title} group chat. Feel free to message eachother here about your plans for the event.`
+      }
+    }
+  });
+}
+
+const getEvent = (title) => {
+  var contents;
+  let filepath = 'events/';
+  firebase.database().ref(filepath).on('value', value => {
+    contents = value.val();
+  });
+  if (contents === undefined) {
+    console.error("Unable to find item: " + title);
+  }
+  return contents[`${title.toLowerCase()}`]
+}
+
+// const even
+
+addEvent("Testing2", "This is such a cool event you all should come", 1000000000, "My House");
+
+console.log(getEvent("testing2").Creator);
+
+export { auth, addEvent, getEvent };
