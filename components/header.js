@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/core';
 
-export default function Header({ toProfile, toFollowing }) {
+export default function Header({ toProfile, toFollowing, Title }) {
 
     const navigation = useNavigation();
 
@@ -15,7 +15,11 @@ export default function Header({ toProfile, toFollowing }) {
                 {/* Event Threads Button */}
                 <Text style={styles.iconText}>#</Text>
             </TouchableOpacity>
-            <Text style={styles.title}>Feed</Text>
+            <Image
+            source={require('../assets/Asset_12x.png')}
+            resizeMode="contain"
+            style={styles.logo}
+            />
             <TouchableOpacity
                 style={styles.profileIcon} 
                 onPress={toProfile}
@@ -34,7 +38,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-end',
         borderBottomWidth: 2,
-        borderBottomColor: 'black'
+        borderBottomColor: 'black',
+        width: '100%',
     },
     title: {
         textAlign: 'center',
@@ -68,5 +73,9 @@ const styles = StyleSheet.create({
         // textShadowColor: 'grey',
         // textShadowOffset: {width: -1, height: 1},
         // textShadowRadius: 10
+    },
+    logo: {
+        width: 225,
+        height: 45
     }
 });

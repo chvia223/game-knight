@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { auth } from '../config/firebase'
+import Header from '../components/header';
 
 const Profile = () => {
     const navigation = useNavigation();
@@ -24,7 +25,8 @@ const Profile = () => {
     };
 
     return (
-        <View style={[styles.page, styles.centerContent]}>
+        <View style={[styles.page]}>
+            <Header toProfile={toFeed} toFollowing={toFollowing} Title="Profile"/>
             <TouchableOpacity 
             style={[styles.centerContent, styles.feedButton, styles.spacing]} 
             onPress={toFollowing}

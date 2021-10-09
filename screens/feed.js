@@ -5,6 +5,8 @@ import Header from '../components/header';
 import TodoItem from '../components/todoItem';
 import AddEvent from '../components/addEvent';
 import { MaterialIcons } from '@expo/vector-icons';
+import AddTodo from '../components/addTodo';
+import { auth, getEvents } from '../config/firebase';
 
 const Feed = () => {
 
@@ -33,6 +35,8 @@ const Feed = () => {
         { text: 'creat', key: '10'},
         { text: 'crea', key: '11'},
     ])
+    
+    // const [todos, setTodos] = useState(getEvents());
 
     const pressHandler = (key) => {
         setTodos((prevTodos) => {
@@ -54,6 +58,8 @@ const Feed = () => {
     //         ])
     //     }
     // }
+
+    
 
     return (
         <TouchableWithoutFeedback onPress={() => {
