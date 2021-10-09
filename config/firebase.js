@@ -148,7 +148,7 @@ const getFollowedEvent = () => {
   if (followedEvent === null || followedEvent === undefined) {
     return 'default';
   }
-  return followedEvent['Following'];
+  return followedEvent.Following;
 }
 
 

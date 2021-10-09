@@ -34,12 +34,11 @@ const Feed = () => {
     // const [todos, setTodos] = useState(getEvents());
 
     const pressHandler = (key) => {
-        console.log(todos);
-        for (const todo in todos) {
-            if (todo['key'] == key) {
-                followEvent(todo['text'])
+        todos.forEach((todo) => {
+            if (todo.key == key) {
+                followEvent(todo.text)
             }
-        }
+        })
     }
 
     // const submitHandler = (text) => {
