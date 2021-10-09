@@ -5,7 +5,6 @@ import Header from '../components/header';
 import TodoItem from '../components/todoItem';
 import AddEvent from '../components/addEvent';
 import { MaterialIcons } from '@expo/vector-icons';
-import AddTodo from '../components/addTodo';
 import { auth, getEvents } from '../config/firebase';
 
 const Feed = () => {
@@ -22,19 +21,7 @@ const Feed = () => {
 
     const [modalOpen, setModalOpen] = useState(false);
 
-    const [todos, setTodos] = useState([
-        { text: 'buy coffee', key: '1' },
-        { text: 'create an app', key: '2'},
-        { text: 'play on the switch', key: '3'},
-        { text: 'create an appp', key: '4'},
-        { text: 'create an ap', key: '5'},
-        { text: 'create an a', key: '6'},
-        { text: 'create an', key: '7'},
-        { text: 'create a', key: '8'},
-        { text: 'create', key: '9'},
-        { text: 'creat', key: '10'},
-        { text: 'crea', key: '11'},
-    ])
+    const [todos, setTodos] = useState(getEvents())
     
     // const [todos, setTodos] = useState(getEvents());
 

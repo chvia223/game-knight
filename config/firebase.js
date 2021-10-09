@@ -83,4 +83,35 @@ const getEvents = function() {
   return events;
 }
 
-export { auth, addEvent, getEvent, getEvents, firebase };
+const addMessage = (message, title) => {
+  let author = auth.currentUser?.email;
+  let time = Date.now();
+  let chatkeyfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
+  firebase.database().ref(chatkeyfilepath).set(time);
+  let chatfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
+  let body = {
+    Author: author,
+    Content: message,
+  }
+  firebase.database().ref(chatfilepath).set(body);
+}
+
+const getMessage = (chat) => {
+  var contents;
+  let filepath = `EventChats/${chat}/Chat/`;
+  firebase.database().ref(filepath).on('value', value => {
+    contents = value.val();
+  });
+  if (contents === null || contents === undefined) {
+    console.error("Unable to find item: " + chat);
+    return{}
+  }
+  let messages = []
+  // console.log("jeremy")
+  for (const key in contents) {
+    messages.push(contents[key])
+  }
+  return messages
+} 
+
+export { auth, addEvent, getEvent, getEvents, addMessage, getMessage, firebase };
