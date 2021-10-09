@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     header: {
         marginTop: 20,
         padding: 10,
-        backgroundColor: '#333',
+        backgroundColor: '#000000',
         flexDirection: 'row',
         justifyContent: 'flex-end',
         borderBottomWidth: 2,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         padding: 8
     },
     threadIcon: {
-        backgroundColor: '#333',
+        backgroundColor: '#000000',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -74,5 +74,35 @@ const styles = StyleSheet.create({
     logo: {
         width: 225,
         height: 45
-    }
+    },
+    maroonBackground: {
+        backgroundColor: "#8C2B3D"
+    },
+    maroonColor: {
+        color: "#8C2B3D"
+    },
+    pinkBackground: {
+        backgroundColor: "#F272B8"
+    },
+    pinkColor: {
+        color: "#F272B8"
+    },
+    lightBlueBackground: {
+        backgroundColor: "#85E7F2"
+    },
+    lightBlueColor: {
+        color: "#85E7F2"
+    },
+    blueBackground: {
+        backgroundColor: "#5FCDD9"
+    },
+    blueColor: {
+        color: "#5FCDD9"
+    },
+    darkBlueBackground: {
+        backgroundColor: "#037F8C"
+    },
+    darkBlueColor: {
+        color: "#037F8C"
+    },
 });
