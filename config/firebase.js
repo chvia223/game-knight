@@ -78,7 +78,14 @@ const getEvents = function() {
   let counter = 0;
   for (const key in contents) {
     counter++;
-    events.push({key: counter.toString(), text: key});
+    events.push({
+      key: counter.toString(), 
+      text: key,
+      Creator: contents[key].Creator,
+      Date: contents[key].Date,
+      Description: contents[key].Description,
+      Location: contents[key].Location
+    });
   }
   return events;
 }

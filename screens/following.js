@@ -30,6 +30,9 @@ const Following = () => {
             >
                 <Text>Feed</Text>
             </TouchableOpacity>
+            <View>
+                {}
+            </View>
         </View>
     )
 }
