@@ -17,12 +17,15 @@ const firebaseConfig = {
 
 // Initialize Firebase
 let app;
-if (firebase.apps.length === 0) {
-    app = firebase.initializeApp(firebaseConfig);
+const initializeApp = () => {
+  if (firebase.apps.length === 0) {
+      app = firebase.initializeApp(firebaseConfig);
+  }
+  else {
+      app = firebase.app()
+  }
 }
-else {
-    app = firebase.app()
-}
+initializeApp();
 
 const auth = firebase.auth()
 
@@ -60,13 +63,16 @@ const getEvent = title => {
 }
 
 const getEvents = function() {
+  if (firebase.apps.length === 0) {
+    initializeApp();
+  }
   var contents;
   let filepath = 'events/';
-  firebase.database().ref(filepath).on('value', value => {
+  app.database().ref(filepath).on('value', value => {
     contents = value.val();
   });
   if (contents === undefined || contents === null) {
-    console.error("Unable to find events");
+    setTimeout(getEvents, 300);
   }
   let events = [];
   let counter = 0;

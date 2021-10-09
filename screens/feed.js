@@ -18,7 +18,8 @@ const Feed = () => {
         navigation.replace("Following")
     }
 
-    const [todos, setTodos] = useState('');
+    
+    const [todos, setTodos] = useState(getEvents());
 
     const pressHandler = (key) => {
         setTodos((prevTodos) => {
@@ -41,6 +42,8 @@ const Feed = () => {
             ])
         }
     }
+
+    
 
     return (
         <TouchableWithoutFeedback onPress={() => {
