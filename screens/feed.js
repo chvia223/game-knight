@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList, Alert, TouchableWithoutFeedback, Keyboard, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import Header from '../components/header';
 import TodoItem from '../components/todoItem';
+import AddEvent from '../components/addEvent';
+import { MaterialIcons } from '@expo/vector-icons';
 import AddTodo from '../components/addTodo';
 import { auth, getEvents } from '../config/firebase';
 
@@ -18,8 +20,23 @@ const Feed = () => {
         navigation.replace("Following")
     }
 
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const [todos, setTodos] = useState([
+        { text: 'buy coffee', key: '1' },
+        { text: 'create an app', key: '2'},
+        { text: 'play on the switch', key: '3'},
+        { text: 'create an appp', key: '4'},
+        { text: 'create an ap', key: '5'},
+        { text: 'create an a', key: '6'},
+        { text: 'create an', key: '7'},
+        { text: 'create a', key: '8'},
+        { text: 'create', key: '9'},
+        { text: 'creat', key: '10'},
+        { text: 'crea', key: '11'},
+    ])
     
-    const [todos, setTodos] = useState(getEvents());
+    // const [todos, setTodos] = useState(getEvents());
 
     const pressHandler = (key) => {
         setTodos((prevTodos) => {
@@ -27,21 +44,20 @@ const Feed = () => {
         })
     }
 
-    const submitHandler = (text) => {
-
-        if(text.length > 3){
-            setTodos((prevTodos) => {
-                return [
-                    { text: text, key: Math.random().toString() },
-                    ...prevTodos
-                ];
-            });
-        } else {
-            Alert.alert('OOPS!', 'Todos must be over 3 chars long', [
-                {text: 'Understood', onPress: () => console.log('alert closed')}
-            ])
-        }
-    }
+    // const submitHandler = (text) => {
+    //     if(text.length > 3){
+    //         setTodos((prevTodos) => {
+    //             return [
+    //                 { text: text, key: Math.random().toString() },
+    //                 ...prevTodos
+    //             ];
+    //         });
+    //     } else {
+    //         Alert.alert('OOPS!', 'Todos must be over 3 chars long', [
+    //             {text: 'Understood', onPress: () => console.log('alert closed')}
+    //         ])
+    //     }
+    // }
 
     
 
@@ -51,10 +67,31 @@ const Feed = () => {
             console.log('dismissed keyboard');
         }}>
             <View style={styles.container}>
+                
+                <Modal 
+                    style={{justifyContent: 'center',
+                            alignItems: 'center'}}
+                    visible={modalOpen} 
+                    animationType='slide'
+                    transparent
+                >
+                    <View style={styles.modalContent}>
+                        <TouchableOpacity
+                            onPress={() => setModalOpen(false)}
+                        >
+                            <MaterialIcons
+                                name='close'
+                                size={24}
+                                
+                            />
+                        </TouchableOpacity>
+                    </View>            
+                </Modal>
+
                 <Header toProfile={toProfile} toFollowing={toFollowing}/>
 
                 <View style={styles.content}>
-                    <AddTodo submitHandler={submitHandler} />
+                    
                     <View style={styles.list}>
                         <FlatList 
                             data={todos}
@@ -63,8 +100,12 @@ const Feed = () => {
                             )}
                         />
                     </View>
+                    
                 </View>
+
+                <AddEvent setModalOpen={setModalOpen}/>
             </View>
+            
         </TouchableWithoutFeedback>
     )
 }
@@ -79,18 +120,24 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
     },
     content: {
-        padding: 40,
+        paddingHorizontal: 20,
     },
-    list: {
-        marginTop: 20,
-    }
-    // input: {
-    //     borderWidth: 1,
-    //     borderColor: '#777',
-    //     padding: 8,
-    //     margin: 10,
-    //     width: 200,
-     
+    modalContent: {
+        marginHorizontal: '10%',
+        marginVertical: '30%',
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'skyblue',
+        borderRadius: 20,
+        borderColor: 'grey',
+        borderWidth: 0,
+        shadowColor: 'grey',
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 1,
+        shadowRadius: 5
+    },
 });
 
 export default Feed
