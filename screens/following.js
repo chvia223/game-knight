@@ -10,6 +10,10 @@ const Following = () => {
         navigation.replace("Profile")
     }
 
+    const toFeed = () => {
+        navigation.replace("Feed")
+    }
+
     return (
         <View style={[styles.page, styles.centerContent]}>
             <TouchableOpacity 
@@ -20,7 +24,7 @@ const Following = () => {
             </TouchableOpacity>
             <TouchableOpacity 
             style={[styles.centerContent, styles.feedButton, styles.spacing]} 
-            onPress={() => {alert('This button still does nothing.')}}
+            onPress={toFeed}
             >
                 <Text>Feed</Text>
             </TouchableOpacity>
