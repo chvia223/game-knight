@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { auth } from '../config/firebase'
+import { auth, getEvent, getChat } from '../config/firebase'
 import Header from '../components/profileHeader';
 
 const Profile = () => {
@@ -26,13 +26,14 @@ const Profile = () => {
 
     
     
-    // let chat = getChat("testing2").forEach(value => {console.log(value)})
-    // let authors = []
-    // let messages = []
-    // for (const key in chat) {
-    //     author.push(chat[key][0])
-    //     message.push(chat[key][0])
-    //   }
+    let chat = getChat("testing2")
+    let authors = []
+    let messages = []
+    for (const key in chat) {
+        authors.push(chat[key][0])
+        messages.push(chat[key][0])
+      }
+      
 
     return (
         <View style={[styles.page]}>
