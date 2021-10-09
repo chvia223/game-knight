@@ -47,12 +47,12 @@ const getValue = (directory, key) => {
   return contents[key]
 }
 
-const addEvent = (title, description, time, location) => {
+const addEvent = (title, description, daysTillEvent, location) => {
   let filepath = `events/${title.toLowerCase()}`
   let chatFilepath = `EventChats/${title.toLowerCase()}`;
   let body = {
     Description: description,
-    Date: time,
+    Date: Date.now() + (daysTillEvent * 86400000),
     Location: location,
     Creator: `${auth.currentUser?.email}`
   }
@@ -68,7 +68,7 @@ const addEvent = (title, description, time, location) => {
   });
 }
 
-const getEvent = (title) => {
+const getEvent = title => {
   var contents;
   let filepath = 'events/';
   firebase.database().ref(filepath).on('value', value => {
@@ -80,10 +80,25 @@ const getEvent = (title) => {
   return contents[`${title.toLowerCase()}`]
 }
 
-// const even
+const getEvents = () => {
+  var contents;
+  let filepath = 'events/';
+  firebase.database().ref(filepath).on('value', value => {
+    contents = value.val();
+  });
+  if (contents === undefined || contents === null) {
+    console.error("Unable to find event");
+  }
+  let events = [];
+  for (const key in contents) {
+    events.push(contents[key]);
+  }
+  return events;
+}
 
-addEvent("Testing2", "This is such a cool event you all should come", 1000000000, "My House");
+let daysTillEvent = 5;
+addEvent("Magic the Gathering Party 2", "This is such a cool event you all should come", daysTillEvent, "My House");
 
-console.log(getEvent("testing2").Creator);
+console.log(getEvents());
 
-export { auth, addEvent, getEvent };
+export { auth, addEvent, getEvent, getEvents };
