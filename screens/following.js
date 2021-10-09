@@ -2,6 +2,8 @@ import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import Header from '../components/threadHeader';
+import { auth, getEvent, getChat, getFollowedEvent } from '../config/firebase'
+
 
 const Following = () => {
 
@@ -14,6 +16,9 @@ const Following = () => {
     const toFeed = () => {
         navigation.replace("Feed")
     }
+
+    let chat = getChat(getFollowedEvent())
+    
 
     return (
         <View style={[styles.page]}>
@@ -30,6 +35,16 @@ const Following = () => {
             >
                 <Text>Feed</Text>
             </TouchableOpacity>
+            {/* <View>
+                {
+                    chat.map((event, index) => {
+                        return (
+                        <View key={index}>
+                            <Text>{event}</Text>
+                        <Veiw/>)
+                    }
+                }
+            </View> */}
         </View>
     )
 }

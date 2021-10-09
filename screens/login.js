@@ -13,6 +13,7 @@ const Login = () => {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged( user => {
             if (user) {
+                navigation.replace("Following")
                 navigation.replace("Feed");
                 navigation.replace("Profile");
             }

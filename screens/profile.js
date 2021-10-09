@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { auth } from '../config/firebase'
+import { auth, getEvent, getChat } from '../config/firebase'
 import Header from '../components/profileHeader';
 
 const Profile = () => {
@@ -23,6 +23,16 @@ const Profile = () => {
             alert(err.message)
         })
     };
+    
+
+    let chat = getChat("testing2")
+    let authors = []
+    let messages = []
+    console.log(chat)
+    for (const key in chat) {
+        authors.push(chat[key]["Author"])
+        messages.push(chat[key]["Content"])
+    }
 
     return (
         <View style={[styles.page]}>
@@ -49,6 +59,7 @@ const Profile = () => {
             >
                 <Text>Sign Out</Text>
             </TouchableOpacity>
+            <Text>{messages[1]}</Text>
         </View>
     )
 }

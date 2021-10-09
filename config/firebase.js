@@ -50,17 +50,22 @@ const addEvent = (title, description, daysTillEvent, location) => {
   });
 }
 
+
+
+
 const getEvent = title => {
   var contents;
   let filepath = 'events/';
   firebase.database().ref(filepath).on('value', value => {
     contents = value.val();
   });
-  if (contents === undefined) {
+  if (contents === null || contents === undefined) {
     console.error("Unable to find item: " + title);
+    return{}
   }
   return contents[`${title.toLowerCase()}`]
 }
+
 
 const getEvents = function() {
   if (firebase.apps.length === 0) {
@@ -78,33 +83,29 @@ const getEvents = function() {
   let counter = 0;
   for (const key in contents) {
     counter++;
-    events.push({key: counter.toString(), text: key});
+    events.push({
+      key: counter.toString(), 
+      text: key,
+      Creator: contents[key].Creator,
+      Date: contents[key].Date,
+      Description: contents[key].Description,
+      Location: contents[key].Location
+    });
   }
   return events;
 }
 
-const addMessage = (message, title) => {
-  let author = auth.currentUser?.email;
-  let time = Date.now();
-  let chatkeyfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
-  firebase.database().ref(chatkeyfilepath).set(time);
-  let chatfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
-  let body = {
-    Author: author,
-    Content: message,
-  }
-  firebase.database().ref(chatfilepath).set(body);
-}
-
-const getMessage = (chat) => {
+const getChat = (chat) => {
   var contents;
   let filepath = `EventChats/${chat}/Chat/`;
   firebase.database().ref(filepath).on('value', value => {
     contents = value.val();
   });
   if (contents === null || contents === undefined) {
-    console.error("Unable to find item: " + chat);
-    return{}
+    return [{
+      Author: 'The Game Knights Development Team', 
+      Message: "It looks like you aren't following any events right now! Try Following one in your feed!"
+    }]
   }
   let messages = []
   // console.log("jeremy")
@@ -114,4 +115,46 @@ const getMessage = (chat) => {
   return messages
 } 
 
-export { auth, addEvent, getEvent, getEvents, addMessage, getMessage, firebase };
+
+// // this function workd!
+const addMessage = (message, title, author) => {
+  let time = Date.now()
+  let chatkeyfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
+  firebase.database().ref(chatkeyfilepath).set(time);
+  let chatfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
+  let body = {
+    Author: author,
+    text: message,
+    key: time,
+  }
+  firebase.database().ref(chatfilepath).set(body);
+}
+
+const followEvent = (event) => {
+  let filepath = `Following/${auth.currentUser?.uid}/`;
+  let body = {
+    Following: event.toLowerCase(),
+  }
+  firebase.database().ref(filepath).set(body);
+}
+
+const getFollowedEvent = () => {
+  let filepath = `Following/${auth.currentUser?.uid}/`;
+  var followedEvent;
+  firebase.database().ref(filepath).on('value', (event) => {
+    followedEvent = event;
+  })
+  return followedEvent.Following;
+}
+
+
+
+// addEvent("Testing2", "This is such a cool event you all should come", 1000000000, "My House");
+
+// console.log(getEvent("testing2").Creator);
+
+// getChat("testing2").forEach(value => {console.log(value)})
+
+
+
+export { auth, addEvent, getEvent, getEvents, getChat, addMessage, followEvent, getFollowedEvent, };

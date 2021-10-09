@@ -5,14 +5,19 @@ import Header from '../components/header';
 import TodoItem from '../components/todoItem';
 import AddEvent from '../components/addEvent';
 import { MaterialIcons } from '@expo/vector-icons';
-import { auth, getEvents } from '../config/firebase';
+import { auth, getEvents, followEvent } from '../config/firebase';
 
 const Feed = () => {
-
+    
     const navigation = useNavigation();
+    
+    const [followedEvents, setFollowedEvents] = useState([{
+        key:'0', 
+        text: "Looks like you aren't following any events!"
+    }]);
 
     const toProfile = () => {
-        navigation.replace("Profile")
+        navigation.replace("Profile", followedEvents)
     }
 
     const toFollowing = () => {
@@ -21,14 +26,15 @@ const Feed = () => {
 
     const [modalOpen, setModalOpen] = useState(false);
 
-    const [todos, setTodos] = useState(getEvents())
+    const [todos, setTodos] = useState(getEvents());
+
+
+    
     
     // const [todos, setTodos] = useState(getEvents());
 
     const pressHandler = (key) => {
-        setTodos((prevTodos) => {
-            return prevTodos.filter(todo => todo.key != key);
-        })
+        followEvent(key)
     }
 
     // const submitHandler = (text) => {
@@ -51,7 +57,6 @@ const Feed = () => {
     return (
         <TouchableWithoutFeedback onPress={() => {
             Keyboard.dismiss();
-            console.log('dismissed keyboard');
         }}>
             <View style={styles.container}>
                 
