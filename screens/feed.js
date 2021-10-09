@@ -5,7 +5,7 @@ import Header from '../components/header';
 import TodoItem from '../components/todoItem';
 import AddEvent from '../components/addEvent';
 import { MaterialIcons } from '@expo/vector-icons';
-import { auth, getEvents } from '../config/firebase';
+import { auth, getEvents, followEvent } from '../config/firebase';
 
 const Feed = () => {
     
@@ -34,19 +34,7 @@ const Feed = () => {
     // const [todos, setTodos] = useState(getEvents());
 
     const pressHandler = (key) => {
-        setTodos((prevTodos) => {
-            prevTodos.forEach((todo) => {
-                if (todo.key == key) {
-                    setFollowedEvents((prevEvents) => {
-                        prevEvents.filter((event) => event.key !== todo.key)
-                        prevEvents.push(todo);
-                        return prevEvents.filter((event) => event.key != '0');
-                    })
-                } 
-            })
-            console.log(followedEvents)
-            return prevTodos;
-        })
+        followEvent(key)
     }
 
     // const submitHandler = (text) => {

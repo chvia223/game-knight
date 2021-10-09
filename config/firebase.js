@@ -102,8 +102,10 @@ const getChat = (chat) => {
     contents = value.val();
   });
   if (contents === null || contents === undefined) {
-    console.error("Unable to find item: " + chat);
-    return{}
+    return [{
+      Author: 'The Game Knights Development Team', 
+      Message: "It looks like you aren't following any events right now! Try Following one in your feed!"
+    }]
   }
   let messages = []
   // console.log("jeremy")
@@ -122,9 +124,27 @@ const addMessage = (message, title, author) => {
   let chatfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
   let body = {
     Author: author,
-    Content: message,
+    text: message,
+    key: time,
   }
   firebase.database().ref(chatfilepath).set(body);
+}
+
+const followEvent = (event) => {
+  let filepath = `Following/${auth.currentUser?.uid}/`;
+  let body = {
+    Following: event.toLowerCase(),
+  }
+  firebase.database().ref(filepath).set(body);
+}
+
+const getFollowedEvent = () => {
+  let filepath = `Following/${auth.currentUser?.uid}/`;
+  var followedEvent;
+  firebase.database().ref(filepath).on('value', (event) => {
+    followedEvent = event;
+  })
+  return followedEvent.Following;
 }
 
 
@@ -133,9 +153,8 @@ const addMessage = (message, title, author) => {
 
 // console.log(getEvent("testing2").Creator);
 
-
 // getChat("testing2").forEach(value => {console.log(value)})
 
 
 
-export { auth, addEvent, getEvent, getEvents, getChat, addMessage, firebase };
+export { auth, addEvent, getEvent, getEvents, getChat, addMessage, followEvent, getFollowedEvent, };
