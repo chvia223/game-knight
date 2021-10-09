@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 20,
         fontWeight: 'bold',
-        flex: 20,
+        flex: 18,
         paddingTop: 5
     },
     profileIcon: {
