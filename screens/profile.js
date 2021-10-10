@@ -38,26 +38,27 @@ const Profile = () => {
         <View style={[styles.page, styles.lightBlueBackground]}>
             <Header toProfile={toFeed} toFollowing={toFollowing} Title="Profile"/>
             <Text style = {[styles.spacing, styles.welcomeText]}>
-                Welcome to Game Night! You are currently signed in as {auth.currentUser?.email}. Click Feed to view events in your area and click Following to look at the Chat Rooms for events in your area.
+                Welcome to Game Night! 
+                You are currently signed in as {auth.currentUser?.email}. Click Feed to view events in your area and click Following to look at the Chat Rooms for events in your area.
             </Text>
             <TouchableOpacity 
-            style={[styles.centerContent, styles.followingButton, styles.spacing]} 
+            style={[styles.centerContent, styles.followingButton, styles.spacing, styles.darkBlueBackground]} 
             onPress={toFollowing}
             >
-                <Text>Following</Text>
+                <Text style={styles.whiteText}>Following</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-            style={[styles.centerContent, styles.feedButton, styles.spacing]} 
+            style={[styles.centerContent, styles.feedButton, styles.spacing, styles.darkBlueBackground]} 
             onPress={toFeed}
             >
-                <Text>Feed</Text>
+                <Text style={styles.whiteText}>Feed</Text>
             </TouchableOpacity>
             <Text>{auth.currentUser?.email}</Text>
             <TouchableOpacity
-            style={[styles.logoutButton, styles.centerContent, styles.spacing]}
+            style={[styles.logoutButton, styles.centerContent, styles.spacing, styles.darkBlueBackground]}
             onPress={handleSignOut}
             >
-                <Text>Sign Out</Text>
+                <Text style={styles.whiteText}>Sign Out</Text>
             </TouchableOpacity>
             <Text>{messages[1]}</Text>
         </View>
@@ -81,19 +82,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     logoutButton: {
-        backgroundColor: '#0782F9',
         width: '60%',
         padding: 15,
         borderRadius: 10,
     },
     feedButton: {
-        backgroundColor: '#0782F9',
         width: '60%',
         padding: 15,
         borderRadius: 10,
     },
     followingButton: {
-        backgroundColor: '#0782F9',
         width: '60%',
         padding: 15,
         borderRadius: 10,
@@ -131,4 +129,7 @@ const styles = StyleSheet.create({
     darkBlueColor: {
         color: "#037F8C"
     },
+    whiteText: {
+        color: "#FFFFFF"
+    }
 })
