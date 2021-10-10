@@ -6,6 +6,7 @@ import TodoItem from '../components/todoItem';
 import AddEvent from '../components/addEvent';
 import { MaterialIcons } from '@expo/vector-icons';
 import { auth, getEvents, followEvent } from '../config/firebase';
+import ReviewForm from '../components/eventForm'
 
 const Feed = () => {
     
