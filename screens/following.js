@@ -111,15 +111,14 @@ const styles = StyleSheet.create({
     },
     message: {
         marginTop: 15,
-        width: '75%',
         alignContent: 'flex-start',
         backgroundColor: '#037F8C',
+        width: '95%',
         padding: 15,
         borderRadius: 10,
     },
     myMessage: {
         marginTop: 15,
-        width: '75%',
         alignItems: 'flex-end',
         backgroundColor: '#8C2B3D',
         padding: 15,
