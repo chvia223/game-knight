@@ -23,7 +23,7 @@ const Following = () => {
 
     return (
         <View style={[styles.page]}>
-            <Header toProfile={toFeed} toFollowing={toFeed} Title="Profile"/>
+            <Header toProfile={toFeed} toFollowing={toFeed} Title="Following"/>
             <TouchableOpacity 
             style={[styles.centerContent, styles.feedButton, styles.spacing]} 
             onPress={toProfile}
