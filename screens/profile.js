@@ -25,11 +25,37 @@ const Profile = () => {
     };
 
     return (
-        <View style={styles.container}>
+
+        <View style={[styles.container, styles.lightBlueBackground]}>
+
+        {/* <View style={styles.container}> */}
+
             <Header toProfile={toFeed} toFollowing={toFollowing} Title="Profile"/>
             <Text style = {[styles.spacing, styles.welcomeText]}>
-                Welcome to Game Night! You are currently signed in as {auth.currentUser?.email}. Click Feed to view events in your area and click Following to look at the Chat Rooms for events in your area.
+                Welcome to Game Night! 
+                You are currently signed in as {auth.currentUser?.email}. Click Feed to view events in your area and click Following to look at the Chat Rooms for events in your area.
             </Text>
+
+            {/* <TouchableOpacity 
+            style={[styles.centerContent, styles.followingButton, styles.spacing, styles.darkBlueBackground]} 
+            onPress={toFollowing}
+            >
+                <Text style={styles.whiteText}>Following</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+            style={[styles.centerContent, styles.feedButton, styles.spacing, styles.darkBlueBackground]} 
+            onPress={toFeed}
+            >
+                <Text style={styles.whiteText}>Feed</Text>
+            </TouchableOpacity>
+            <Text>{auth.currentUser?.email}</Text>
+            <TouchableOpacity
+            style={[styles.logoutButton, styles.centerContent, styles.spacing, styles.darkBlueBackground]}
+            onPress={handleSignOut}
+            >
+                <Text style={styles.whiteText}>Sign Out</Text>
+            </TouchableOpacity> */}
+
 
             {/* <TouchableOpacity 
             style={[styles.centerContent, styles.followingButton, styles.spacing]} 
@@ -68,6 +94,7 @@ const Profile = () => {
                         </TouchableOpacity>
                 </View>
             </View>
+
         </View>
     )
 }
@@ -82,16 +109,64 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor: 'gray',
         alignItems: 'center',
     },
     logoutButton: {
+        width: '60%',
         backgroundColor: '#0782F9',
         padding: 15,
         width: '90%',
         borderRadius: 10,
         alignItems: 'center'
     },
+
+    // feedButton: {
+    //     width: '60%',
+    //     padding: 15,
+    //     borderRadius: 10,
+    // },
+    // followingButton: {
+    //     width: '60%',
+    //     padding: 15,
+    //     borderRadius: 10,
+    // },
+    // spacing: {
+    //     marginBottom: 15,
+    // },
+    // maroonBackground: {
+    //     backgroundColor: "#8C2B3D"
+    // },
+    // maroonColor: {
+    //     color: "#8C2B3D"
+    // },
+    // pinkBackground: {
+    //     backgroundColor: "#F272B8"
+    // },
+    // pinkColor: {
+    //     color: "#F272B8"
+    // },
+    lightBlueBackground: {
+        backgroundColor: "#85E7F2"
+    },
+    // lightBlueColor: {
+    //     color: "#85E7F2"
+    // },
+    // blueBackground: {
+    //     backgroundColor: "#5FCDD9"
+    // },
+    // blueColor: {
+    //     color: "#5FCDD9"
+    // },
+    // darkBlueBackground: {
+    //     backgroundColor: "#037F8C"
+    // },
+    // darkBlueColor: {
+    //     color: "#037F8C"
+    // },
+    // whiteText: {
+    //     color: "#FFFFFF"
+    // },
+
     profileCard: {
         borderWidth: 3,
         borderColor: 'blue',
