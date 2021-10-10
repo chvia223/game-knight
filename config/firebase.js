@@ -96,15 +96,18 @@ const getEvents = function() {
 }
 
 const getChat = (chat) => {
+  console.log('chat: ', chat)
+  console.log('chat type: ', typeof chat)
   var contents;
   let filepath = `EventChats/${chat}/Chat/`;
   firebase.database().ref(filepath).on('value', value => {
     contents = value.val();
+    console.log('contents: ', contents);
   });
   if (contents === null || contents === undefined) {
     return [{
       Author: 'The Game Knights Development Team', 
-      Message: "It looks like you aren't following any events right now! Try Following one in your feed!"
+      Content: "It looks like you aren't following any events right now! Try Following one in your feed!"
     }]
   }
   let messages = []
@@ -140,7 +143,7 @@ const followEvent = (event) => {
 }
 
 const getFollowedEvent = () => {
-  let filepath = `Following/${auth.currentUser?.uid}/`;
+  let filepath = `Following/${auth.currentUser?.uid}`;
   var followedEvent;
   firebase.database().ref(filepath).on('value', (event) => {
     followedEvent = event;
@@ -148,7 +151,14 @@ const getFollowedEvent = () => {
   if (followedEvent === null || followedEvent === undefined) {
     return 'default';
   }
-  return followedEvent.Following;
+  // console.log(typeof followedEvent);
+  // console.log(followedEvent.node_.value_)
+  var eventValue;
+  followedEvent.forEach((event) => {
+    // console.log(event.node_.value_)
+    eventValue = event.node_.value_;
+  })
+  return eventValue;
 }
 
 
