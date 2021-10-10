@@ -121,13 +121,13 @@ const getChat = (chat) => {
 
 
 // // this function workd!
-const addMessage = (message, title, author) => {
+const addMessage = (message, title) => {
   let time = Date.now()
   let chatkeyfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
   firebase.database().ref(chatkeyfilepath).set(time);
   let chatfilepath = `EventChats/${title.toLowerCase()}/Chat/${time}`;
   let body = {
-    Author: author,
+    Author: auth.currentUser?.email,
     text: message,
     key: time,
   }
