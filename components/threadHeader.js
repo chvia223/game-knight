@@ -21,7 +21,7 @@ export default function Header({ toProfile, toFollowing }) {
                 style={styles.profileIcon} 
                 onPress={toProfile}
             >
-                <Text style={styles.iconText}>#</Text>
+                <Text style={styles.iconText}>{"->"}</Text>
             </TouchableOpacity>
         </View>
     )
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: 225,
-        height: 45
+        height: 45,
+        flex: 10
     }
 });
