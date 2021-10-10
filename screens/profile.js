@@ -26,7 +26,7 @@ const Profile = () => {
 
     return (
 
-        <View style={[styles.page, styles.lightBlueBackground]}>
+        <View style={[styles.container, styles.lightBlueBackground]}>
 
         {/* <View style={styles.container}> */}
 
@@ -36,7 +36,7 @@ const Profile = () => {
                 You are currently signed in as {auth.currentUser?.email}. Click Feed to view events in your area and click Following to look at the Chat Rooms for events in your area.
             </Text>
 
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
             style={[styles.centerContent, styles.followingButton, styles.spacing, styles.darkBlueBackground]} 
             onPress={toFollowing}
             >
@@ -54,7 +54,7 @@ const Profile = () => {
             onPress={handleSignOut}
             >
                 <Text style={styles.whiteText}>Sign Out</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
 
             {/* <TouchableOpacity 
@@ -70,7 +70,7 @@ const Profile = () => {
             >
                 <Text>Feed</Text>
             </TouchableOpacity> */}
-            {/* <View style={styles.profileContainer}>
+            <View style={styles.profileContainer}>
                 <View style={styles.profileCard}>
                         <View style={styles.profilePic}>
 
@@ -93,7 +93,7 @@ const Profile = () => {
                             <Text>Sign Out</Text>
                         </TouchableOpacity>
                 </View>
-            </View> */}
+            </View>
 
         </View>
     )
@@ -112,63 +112,60 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     logoutButton: {
-
         width: '60%',
-
         backgroundColor: '#0782F9',
-
         padding: 15,
         width: '90%',
         borderRadius: 10,
         alignItems: 'center'
     },
 
-    feedButton: {
-        width: '60%',
-        padding: 15,
-        borderRadius: 10,
-    },
-    followingButton: {
-        width: '60%',
-        padding: 15,
-        borderRadius: 10,
-    },
-    spacing: {
-        marginBottom: 15,
-    },
-    maroonBackground: {
-        backgroundColor: "#8C2B3D"
-    },
-    maroonColor: {
-        color: "#8C2B3D"
-    },
-    pinkBackground: {
-        backgroundColor: "#F272B8"
-    },
-    pinkColor: {
-        color: "#F272B8"
-    },
+    // feedButton: {
+    //     width: '60%',
+    //     padding: 15,
+    //     borderRadius: 10,
+    // },
+    // followingButton: {
+    //     width: '60%',
+    //     padding: 15,
+    //     borderRadius: 10,
+    // },
+    // spacing: {
+    //     marginBottom: 15,
+    // },
+    // maroonBackground: {
+    //     backgroundColor: "#8C2B3D"
+    // },
+    // maroonColor: {
+    //     color: "#8C2B3D"
+    // },
+    // pinkBackground: {
+    //     backgroundColor: "#F272B8"
+    // },
+    // pinkColor: {
+    //     color: "#F272B8"
+    // },
     lightBlueBackground: {
         backgroundColor: "#85E7F2"
     },
-    lightBlueColor: {
-        color: "#85E7F2"
-    },
-    blueBackground: {
-        backgroundColor: "#5FCDD9"
-    },
-    blueColor: {
-        color: "#5FCDD9"
-    },
-    darkBlueBackground: {
-        backgroundColor: "#037F8C"
-    },
-    darkBlueColor: {
-        color: "#037F8C"
-    },
-    whiteText: {
-        color: "#FFFFFF"
-    },
+    // lightBlueColor: {
+    //     color: "#85E7F2"
+    // },
+    // blueBackground: {
+    //     backgroundColor: "#5FCDD9"
+    // },
+    // blueColor: {
+    //     color: "#5FCDD9"
+    // },
+    // darkBlueBackground: {
+    //     backgroundColor: "#037F8C"
+    // },
+    // darkBlueColor: {
+    //     color: "#037F8C"
+    // },
+    // whiteText: {
+    //     color: "#FFFFFF"
+    // },
 
     profileCard: {
         borderWidth: 3,

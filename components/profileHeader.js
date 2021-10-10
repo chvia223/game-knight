@@ -73,6 +73,9 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: 225,
+        height: 45,
+        flex: 10
+    },
 
     //     height: 45
     // },
@@ -94,9 +97,9 @@ const styles = StyleSheet.create({
     // lightBlueColor: {
     //     color: "#85E7F2"
     // },
-    // blueBackground: {
-    //     backgroundColor: "#5FCDD9"
-    // },
+    blueBackground: {
+        backgroundColor: "#5FCDD9"
+    },
     // blueColor: {
     //     color: "#5FCDD9"
     // },
@@ -107,8 +110,6 @@ const styles = StyleSheet.create({
     //     color: "#037F8C"
     // },
 
-        height: 45,
-        flex: 10
-    }
+    
 
 });

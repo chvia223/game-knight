@@ -76,6 +76,9 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: 225,
+        height: 45,
+        flex: 10
+    },
 
     //     height: 45
     // },
@@ -85,9 +88,9 @@ const styles = StyleSheet.create({
     // maroonColor: {
     //     color: "#8C2B3D"
     // },
-    // pinkBackground: {
-    //     backgroundColor: "#F272B8"
-    // },
+    pinkBackground: {
+        backgroundColor: "#F272B8"
+    },
     // pinkColor: {
     //     color: "#F272B8"
     // },
@@ -97,9 +100,9 @@ const styles = StyleSheet.create({
     // lightBlueColor: {
     //     color: "#85E7F2"
     // },
-    // blueBackground: {
-    //     backgroundColor: "#5FCDD9"
-    // },
+    blueBackground: {
+        backgroundColor: "#5FCDD9"
+    },
     // blueColor: {
     //     color: "#5FCDD9"
     // },
@@ -110,8 +113,5 @@ const styles = StyleSheet.create({
     //     color: "#037F8C"
     // },
 
-        height: 45,
-        flex: 10
-    }
 
 });
