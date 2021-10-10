@@ -18,30 +18,19 @@ const Following = () => {
     }
 
     let chat = getChat(getFollowedEvent())
-    console.log(getFollowedEvent())
+    console.log(chat)
                 
 
     return (
         <View style={[styles.page]}>
             <Header toProfile={toFeed} toFollowing={toFeed} Title="Profile"/>
-            <TouchableOpacity 
-            style={[styles.centerContent, styles.feedButton, styles.spacing]} 
-            onPress={toProfile}
-            >
-                <Text>Profile</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-            style={[styles.centerContent, styles.feedButton, styles.spacing]} 
-            onPress={toFeed}
-            >
-                <Text>Feed</Text>
-            </TouchableOpacity>
+            
             <View>
                 {
-                    chat.map((event, index) => {
+                    chat.slice(0).reverse().map((event, index) => {
                         return (
-                            <View key={index}>
-                                <Text>{event.Author} : {event.Message}</Text>
+                            <View key={index} style={styles.message}>
+                                <Text>{event.Author} : {event.Content}</Text>
                             </View>
                         );
                     })
