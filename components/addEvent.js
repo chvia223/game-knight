@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button } from 'react-native'
+import { Formik } from 'formik';
 
 export default function AddEvent({ setModalOpen }) {
 
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
         borderWidth: 0.2,
         borderColor: 'grey',
         borderRadius: 40,
-        marginRight: 10,
+        marginRight: 20,
         marginBottom: 20,
         shadowColor: 'grey',
         shadowOffset: {width: 1, height: 2},
