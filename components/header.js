@@ -9,11 +9,11 @@ export default function Header({ toProfile, toFollowing, Title }) {
     return (
         <View style={styles.header}>
             <TouchableOpacity
-                style={styles.threadIcon}
+                style={[styles.threadIcon, styles.pinkBackground]}
                 onPress={toFollowing}
             >
                 {/* Event Threads Button */}
-                <Text style={styles.iconText}>#</Text>
+                <Text style={[styles.iconText, ]}>#</Text>
             </TouchableOpacity>
             <Image
             source={require('../assets/Asset_12x.png')}
@@ -21,7 +21,7 @@ export default function Header({ toProfile, toFollowing, Title }) {
             style={styles.logo}
             />
             <TouchableOpacity
-                style={styles.profileIcon} 
+                style={[styles.profileIcon, styles.blueBackground]} 
                 onPress={toProfile}
             >
                 <Text style={styles.iconText}>:D</Text>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     header: {
         marginTop: 20,
         padding: 10,
-        backgroundColor: '#333',
+        backgroundColor: '#000000',
         flexDirection: 'row',
         justifyContent: 'flex-end',
         borderBottomWidth: 2,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         paddingTop: 5
     },
     profileIcon: {
-        backgroundColor: 'white',
+        
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -76,7 +76,42 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: 225,
+
+    //     height: 45
+    // },
+    // maroonBackground: {
+    //     backgroundColor: "#8C2B3D"
+    // },
+    // maroonColor: {
+    //     color: "#8C2B3D"
+    // },
+    // pinkBackground: {
+    //     backgroundColor: "#F272B8"
+    // },
+    // pinkColor: {
+    //     color: "#F272B8"
+    // },
+    // lightBlueBackground: {
+    //     backgroundColor: "#85E7F2"
+    // },
+    // lightBlueColor: {
+    //     color: "#85E7F2"
+    // },
+    // blueBackground: {
+    //     backgroundColor: "#5FCDD9"
+    // },
+    // blueColor: {
+    //     color: "#5FCDD9"
+    // },
+    // darkBlueBackground: {
+    //     backgroundColor: "#037F8C"
+    // },
+    // darkBlueColor: {
+    //     color: "#037F8C"
+    // },
+
         height: 45,
         flex: 10
     }
+
 });
