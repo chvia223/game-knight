@@ -12,7 +12,7 @@ export default function Header({ toProfile, toFollowing }) {
                 style={styles.profileIcon} 
                 onPress={toProfile}
             >
-                <Text style={styles.iconText}>D:</Text>
+                <Text style={styles.iconText}>{"<-"}</Text>
             </TouchableOpacity>
             <Image
             source={require('../assets/Asset_12x.png')}
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: 225,
-        height: 45
+        height: 45,
+        flex: 10
     }
 });

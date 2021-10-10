@@ -24,8 +24,9 @@ const Following = () => {
 
     return (
         <View style={[styles.page]}>
-            <Header toProfile={toFeed} toFollowing={toFeed} Title="Profile"/>
-            
+
+            <Header toProfile={toFeed} toFollowing={toFeed} Title="Following"/>
+
             <View>
                 {
                     chat.slice(0).reverse().map((event, index) => {
