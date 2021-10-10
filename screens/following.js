@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     },
     message: {
         marginTop: 15,
-        width: '65%',
+        width: '75%',
         alignContent: 'flex-start',
         backgroundColor: '#037F8C',
         padding: 15,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     },
     myMessage: {
         marginTop: 15,
-        width: '65%',
+        width: '75%',
         alignItems: 'flex-end',
         backgroundColor: '#8C2B3D',
         padding: 15,
