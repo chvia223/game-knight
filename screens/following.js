@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core'
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, ScrollView, View, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native'
 import { ScreenStackHeaderRightView } from 'react-native-screens';
 import Header from '../components/threadHeader';
 import { auth, getEvent, getChat, getFollowedEvent } from '../config/firebase'
@@ -19,15 +19,14 @@ const Following = () => {
     }
 
     let chat = getChat(getFollowedEvent())
-    console.log(chat)
                 
 
     return (
-        <View style={[styles.page]}>
+        <KeyboardAvoidingView style={[styles.page, styles.lightBlueBackground]}>
 
             <Header toProfile={toFeed} toFollowing={toFeed} Title="Following"/>
 
-            <View>
+            <ScrollView style={{height: 100}}>
                 {
                     chat.slice(0).reverse().map((event, index) => {
                         if (event.Author == auth.currentUser?.email) {
@@ -44,8 +43,13 @@ const Following = () => {
                         );
                     })
                 }
+            </ScrollView>
+            <View style={{backgroundColor: 'white', padding: 10, marginBottom: 265, marginTop: 15, borderRadius: 10, width: '90%'}}>
+            <TextInput placeholder="Type your message here..." style={{}}>
+                
+            </TextInput>
             </View>
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 
@@ -58,7 +62,6 @@ const styles = StyleSheet.create({
     },
     page: {
         flex: 1,
-        backgroundColor: 'gray',
         alignItems: 'center',
     },
     logoutButton: {
