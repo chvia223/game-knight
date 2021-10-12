@@ -4,9 +4,9 @@
     "slug": "GameNight",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/new.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Asset_12x.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,12 +21,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/new.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/new.png"
+    },
+    "description": "This is our app! It isn't completely done yet, but it connects to firebase to get the data that you see. The app is for people who are looking for local game nights in their area where they can go and meet new people and make new friends. After all the loneliness the pandemic has caused, we hope this can lift peoples' spirits and bring them together. ",
+    "githubUrl": "https://github.com/chvia223/game-knight"
   }
 }
