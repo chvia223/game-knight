@@ -1,3 +1,5 @@
+# NOTICE: An older version of Expo Go needs to be used to demo this project. It must be able to support Expo v42.*.*
+
 # Overview
 
 
@@ -30,8 +32,10 @@ We used EXPO Go to test our app as we developed it. If you'd like to test what w
 * Git
 * GitHub
 * Javascript
-* React Native
-* EXPO Go
+* React Native SDK v42.0.0
+* Expo v42.0.5
+* Firebase v9.17.1 
+* EXPO Go 
 
 # Useful Websites
 
